@@ -4,7 +4,7 @@ export default class Ability {
     constructor (tier, rank, name, element, [...primaryEffect], [...secondaryEffect]){
         this.tier = tier;
         this.rank = rank;
-        this.name = name;
+        this.abilityName = name;
         this.element = element;
         this.primaryEffect = [...primaryEffect];
         this.secondaryEffect = [...secondaryEffect];
@@ -14,7 +14,7 @@ export default class Ability {
             alt: `${name} is an ability of ${element} element. It is tier ${tier}, rank ${rank}.`
         };
         this.colour = getComplimentaryColours(colourMatcher(element));
-        this.image = {
+        this.icon = {
             image: AbilityPlaceholderImage,
             description: "Description of image goes here"
         }

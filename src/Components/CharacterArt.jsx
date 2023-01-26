@@ -4,8 +4,8 @@ const CharacterPlaceholderImage = require("../Images/CharacterPlaceholderImage.j
 
 export default function CharacterArt({character}){
     <ArtFrame 
-    src={character.image ? character.image.url : CharacterPlaceholderImage}
-    alt={character.image ? character.image.description : "Image of the character"}
+    src={character.icon ? character.icon.image : CharacterPlaceholderImage}
+    alt={character.icon ? character.icon.description : "Image of the character"}
     
     />
 };
