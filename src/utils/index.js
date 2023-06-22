@@ -26,8 +26,8 @@ export async function createNewUser(username, password, userType){
 export async function authCheck(){
     try {
         const jwtToken = getCookie("jwt_token");
-        const response = await fetch(
-            process.env.REACT_APP_FETCH_URL + "checkPersistentLogin",
+        const response = jwtToken ? await fetch(
+            process.env.REACT_APP_FETCH_URL + "authCheck/",
             {
                 method: "GET",
                 headers: {
@@ -37,8 +37,21 @@ export async function authCheck(){
                     "Authorization": `Bearer ${jwtToken}`
                 },
             },
+        ) : await fetch(
+            process.env.REACT_APP_FETCH_URL + "authCheck/",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin" : "*",
+                    "referrerPolicy": "origin",
+                    "Authorization": ``
+                },
+            },
         );
-        return await JSON.parse(response)
+        console.log(response);
+        const data = await JSON.parse(response)
+        return data
     } catch (error) {
         console.log(error)
     }
@@ -54,7 +67,7 @@ export function writeCookie (key, value, days) {
 };
 export function getCookie (cookieName) {
     const re = new RegExp(`(?<=${cookieName}=)[^;]*`)
-    console.log(re)
+    // console.log(re)
     try {
         let cookie = document.cookie.match(re)[0]
         console.log(cookie)
@@ -139,14 +152,33 @@ export async function updateCharacter(characterObject){
 };
 export async function readPlayer(username){
     try {
-        const response = await fetch(process.env.REACT_APP_FETCH_URL+"readPlayer/", {
-            method: "PUT",
+        const response = await fetch(
+            process.env.REACT_APP_FETCH_URL + "readPlayer/", {
+            method: "POST",
             headers: {
                 "Content-Type":"application/json",
                 "Access-Control-Allow-Origin":"*",
                 "referrerPolicy":"origin",
             },
             body: JSON.stringify({username: username})
+        });
+        console.log(response);
+        const data = response.ok ? await JSON.parse(response) : response
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+};
+export async function readCharacter(characterName){
+    try {
+        const response = await fetch(process.env.REACT_APP_FETCH_URL+"readCharacter/", {
+            method: "POST",
+            headers: {
+                "Content-Type":"application/json",
+                "Access-Control-Allow-Origin":"*",
+                "referrerPolicy":"origin",
+            },
+            body: JSON.stringify({characterName: characterName})
         });
         const data = await JSON.parse(response);
         return data

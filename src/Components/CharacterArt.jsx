@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import styled from "styled-components";
 const CharacterPlaceholderImage = require("../Images/CharacterPlaceholderImage.jpg");
 

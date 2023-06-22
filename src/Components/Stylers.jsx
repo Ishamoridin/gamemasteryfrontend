@@ -1,13 +1,16 @@
 export function colourMatcher(entity){
     switch(entity){
-        case 'stamina': return ('#fffd7c');
-        case 'health': return ('#ff0000');
-        case 'fire': return ('#d34300');
-        case 'water': return ('#003dc0');
-        case 'wind': return ('#9cc700');
-        case 'earth': return ('#4b2a00');
-        case 'wood': return ('#006d0968');
-        case 'metal': return ('#ffe600');
+        case 'health' : return ('#ff0000');
+        case 'fire' : return ('#d34300');
+        case 'water' : return ('#003dc0');
+        case 'wind' : return ('#9cc700');
+        case 'earth' : return ('#4b2a00');
+        case 'wood' : return ('#006d0968');
+        case 'metal' : return ('#ffe600');
+        case 'physical' : return (`#ff0101`);
+        case 'mental' : return(`#a200ff`);
+        case 'social' : return(`#ff8800`);
+        case 'magical' : return('#00fff2');
         default: return ('#ff00ff');
 }};
 export function getLighterComplimentaryColor(color) {

@@ -7,10 +7,12 @@ export default class Character {
         this.inherent = new subCharacter(forename, middlenames, surname, race, extras);
         this.visible = new subCharacter(forename, middlenames,surname, race, extras);
         this.temporary = new subCharacter(forename, middlenames, surname, race, extras);
-    }
-    image = {
-        url:CharacterPlaceholderImage,
-        description:"This is where your character description goes",
+        this.image = {
+            url: CharacterPlaceholderImage,
+            description: "This is where your character description goes",
+        };
+        this.campaign = [];
+        this.active = false;
     }
     makeCurrentMoreInherent(currentObject, inherentObject, degree) {
         let newObject = {};
@@ -107,7 +109,7 @@ class subCharacter {
                     multiplier:1,
                     modifier:0,
                 },
-            };
+        };
         this.attributes.magical = {
                 manaIntensity:{
                     value:(this.multiplier*(this.base+this.modifier)),
@@ -127,7 +129,7 @@ class subCharacter {
                     multiplier:1,
                     modifier:0,
                 }
-            };
+        };
         this.skills = {
             tier01:[],
             tier02:[],
@@ -165,7 +167,5 @@ class subCharacter {
             },
         };
         this.history = {};
-        }
-
-        
-    }
+    };        
+};

@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { applyRace, races } from "../WorldSettings/races";
 import Character from "../Classes/Character"
 
-export default function App({player}) {
+export default function CharacterCreation({player}) {
     const [forename, setForename] = useState();
     const [surname, setSurname] = useState();
     const [middlename, setMiddlename] = useState([]);
     const [race, setRace] = useState();
     const submitHandler = () => {
         const newCharacter = new Character(forename, surname, middlename, race, "");
-        applyRace(newCharacter.race, newCharacter)
-        const updatePlayer = player
+        applyRace(newCharacter.race, newCharacter);
+        player.character.push(forename+" "+surname)
     }
     return (
         <CharacterCreationWrapper>

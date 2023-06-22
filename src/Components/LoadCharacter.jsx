@@ -25,7 +25,7 @@ export default async function LoadCharacter({player, character, setCharacter}) {
         onClick={loaderClickHandler}
         />
         {characterArray.map((character, index) => {return(<CharacterCard character={character} key={index}/>)})}
-        <CharacterLoaderRefresher onClick={() => refreshCharacterArray}/>
+        <CharacterLoaderRefresher onClick={() => refreshCharacterArray()}/>
         </>
     )
 };
