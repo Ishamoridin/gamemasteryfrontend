@@ -24,15 +24,15 @@ export default class Player {
         });
         const missingGMList = [];
         this.currentGM.forEach((GMName) => {
-            if (GMList.indexOf(GMName) === -1){missingGMList.push(GMName)} // Check each GM on currentGM to see if they're on GMlist, make a list of those which aren't called missingGMList
+            if (GMList.indexOf(GMName) === -1){missingGMList.push(GMName)}                                  // Check each GM on currentGM to see if they're on GMlist, make a list of those which aren't called missingGMList
         });
         this.currentGM = GMList
         ;
         missingGMList.forEach((GMName) => {
-            if (this.pastGM.indexOf(GMName) === -1){this.pastGM.push(GMName)} // Check each GM missingGMList to see if they're listed as pastGMs in this.pastGM, and adds them if not
+            if (this.pastGM.indexOf(GMName) === -1){this.pastGM.push(GMName)}                                   // Check each GM missingGMList to see if they're listed as pastGMs in this.pastGM, and adds them if not
         });
         this.pastGM.forEach((GMName) => {
-            if (this.currentGM.indexOf(GMName) !== -1){this.pastGM.splice(this.pastGM.indexOf(GMName), 1)} // Checks each GM in this.pastGM to see if they're also in this.currentGM, then prunes them from this.pastGM if so.
+            if (this.currentGM.indexOf(GMName) !== -1){this.pastGM.splice(this.pastGM.indexOf(GMName), 1)}   // Checks each GM in this.pastGM to see if they're also in this.currentGM, then prunes them from this.pastGM if so.
         });
     }
     async savePlayerSession(){
