@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import styled from "styled-components";
-import Home from "./Pages/Home";
+import Home from "./Pages/Home.jsx";
 import CharacterSheet from "./Pages/CharacterSheet";
 import CharacterLoad from "./Pages/CharacterLoad";
 import CharacterCreation from "./Pages/CharacterCreation";
@@ -33,72 +33,72 @@ export default function App(){
     currentUser && fetchPlayerObject(currentUser)
   }, [currentUser])
   return (
-    <Body>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" 
-          element={
-            <Home 
-            setPlayer={setPlayerObject}
-            player={playerObject}
+      <Main>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" 
+              element={
+                <Home 
+                setPlayer={setPlayerObject}
+                player={playerObject}
+                />
+              }
             />
-          }
-        />
-        <Route path="/CharacterCreation"
-          element={
-            <CharacterCreation 
-              player={playerObject}
+            <Route path="/CharacterCreation"
+              element={
+                <CharacterCreation 
+                  player={playerObject}
+                />
+              }
             />
-          }
-        />
-        <Route path="/CharacterLoad"
-          element={
-            <CharacterLoad 
-              player={playerObject}
-              character={characterObject}
-              setCharacter={setCharacterObject}
+            <Route path="/CharacterLoad"
+              element={
+                <CharacterLoad 
+                  player={playerObject}
+                  character={characterObject}
+                  setCharacter={setCharacterObject}
+                />
+              }
             />
-          }
-        />
-        <Route path="/CharacterSheet"
-          element={
-            <CharacterSheet 
-              player={playerObject}
+            <Route path="/CharacterSheet"
+              element={
+                <CharacterSheet 
+                  player={playerObject}
+                />
+              }
             />
-          }
-        />
-        <Route path="/GMScreen"
-          element={
-            <GMScreen user={currentUser} />
-          }
-        />
-        <Route path="UserCreation"
-          element={
-            <UserCreation setUser={setCurrentUser} />
-          }
-        />
-        <Route path="/Login"
-          element={
-            <Login setUser={setNewLogin} user={currentUser} />
-          }
-        />
-        <Route path="/PlayerProfile"
-          element={
-            <PlayerProfile player={playerObject} />
-          }
-        />
-        <Route path="/UserProfile"
-          element={
-            <UserProfile isUserGM={currentUser ? currentUser.isGM : false} />
-          }
-        />
-      </Routes>
-    </BrowserRouter>
-    </Body>
+            <Route path="/GMScreen"
+              element={
+                <GMScreen user={currentUser} />
+              }
+            />
+            <Route path="/UserCreation"
+              element={
+                <UserCreation setUser={setCurrentUser} />
+              }
+            />
+            <Route path="/Login"
+              element={
+                <Login setUser={setNewLogin} user={currentUser} />
+              }
+            />
+            <Route path="/PlayerProfile"
+              element={
+                <PlayerProfile player={playerObject} />
+              }
+            />
+            <Route path="/UserProfile"
+              element={
+                <UserProfile isUserGM={currentUser ? currentUser.isGM : false} />
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </Main>
   );
 }
 
-const Body = styled.body`
+const Main = styled.div`
   display:flex;
   flex-flow:column nowrap;
   justify-content: center;
